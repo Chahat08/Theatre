@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
@@ -9,6 +10,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public enum property { usable, displayable };
     public property ItemProperty { get; set; }
+
+    private string displayImage;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -32,8 +35,16 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public void AssignProperty(int orderNumber)
+    public void AssignProperty(int orderNumber, string displayImage)
     {
         ItemProperty = (property)orderNumber;
+        this.displayImage = displayImage;
+    }
+
+    public void DisplayItem()
+    {
+        inventory.GetComponent<Inventory>().itemDisplayer.SetActive(true);
+        inventory.GetComponent<Inventory>().itemDisplayer.GetComponent<Image>().sprite =
+            Resources.Load<Sprite>("Items/"+displayImage);
     }
 }

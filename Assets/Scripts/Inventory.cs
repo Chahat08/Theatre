@@ -9,10 +9,14 @@ public class Inventory : MonoBehaviour
     public GameObject previousSelectedSlot { get; set; }
 
     private GameObject slots;
+    public GameObject itemDisplayer { get; set; } 
 
     void InitializeInventory()
     {
-        var slots = GameObject.Find("Slots");
+
+        slots = GameObject.Find("Slots");
+        itemDisplayer = GameObject.Find("ItemDisplayer");
+
         foreach(Transform slot in slots.transform)
         {
             // gets the first child of the slot object
@@ -26,7 +30,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         InitializeInventory();
-        slots = GameObject.Find("Slots");
     }
 
     // Update is called once per frame
@@ -44,6 +47,10 @@ public class Inventory : MonoBehaviour
                 // if the gameobject we are iterating over is the current slot and if it's usuable then do:
                 slot.GetComponent<Image>().color = new Color(.9f, .4f, .6f, 1);
 
+            }
+            else if (slot.gameObject == currentSelectedSlot && slot.GetComponent<Slot>().ItemProperty == Slot.property.displayable)
+            {
+                slot.GetComponent<Slot>().DisplayItem();
             }
             else
             {
