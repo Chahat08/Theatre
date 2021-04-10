@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ButtonHandler : MonoBehaviour
 {
+    public AudioSource sound;
+
     private DisplayImage currentWall;
 
     private float initialCameraSize;
@@ -19,11 +21,13 @@ public class ButtonHandler : MonoBehaviour
 
     public void OnLeftClickArrow()
     {
+        sound.Play();
         currentWall.CurrentImage -= 1;
         currentWall.CurrentState = DisplayImage.State.normal;
     }
     public void OnRightClickArrow()
     {
+        sound.Play();
         currentWall.CurrentImage += 1;
         currentWall.CurrentState = DisplayImage.State.normal;
     }
@@ -31,6 +35,7 @@ public class ButtonHandler : MonoBehaviour
     public void OnClickReturn()
     {
         // we want to return from the zoomed in state (or the changed view) after clicking the buttonReturn
+        sound.Play();
 
         if (currentWall.CurrentState == DisplayImage.State.zoom)
         {

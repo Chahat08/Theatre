@@ -13,6 +13,13 @@ public class ZoomInObject : MonoBehaviour, IInteractable
         gameObject.layer = 2; // layer 2 ignores raycast, so that we can't zoom in more than once at a time
         currentDisplay.CurrentState = DisplayImage.State.zoom;
 
+        if (gameObject.GetComponent<AudioSource>() != null)
+        {
+            AudioSource audio = gameObject.GetComponent<AudioSource>();
+            AudioClip clip = gameObject.GetComponent<AudioSource>().clip;
+            audio.PlayOneShot(clip);
+        }
+
         ConstraintCamera();
     }
     
