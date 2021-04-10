@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 {
     private GameObject inventory;
 
-    public enum property { usable, displayable };
+    public enum property { usable, displayable, empty };
     public property ItemProperty { get; set; }
 
     private string displayImage;

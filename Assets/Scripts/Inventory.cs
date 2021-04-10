@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Inventory : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         SelectSlot();
+        HideDisplay();
     }
 
     void SelectSlot()
@@ -55,6 +57,19 @@ public class Inventory : MonoBehaviour
             else
             {
                 slot.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+            }
+        }
+    }
+
+    void HideDisplay()
+    {
+        if(Input.GetMouseButtonDown(0) && UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+        {
+            itemDisplayer.SetActive(false);
+            if (currentSelectedSlot.GetComponent<Slot>().ItemProperty == Slot.property.displayable || currentSelectedSlot)
+            {
+                currentSelectedSlot = previousSelectedSlot;
+                previousSelectedSlot = currentSelectedSlot;
             }
         }
     }
