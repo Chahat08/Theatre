@@ -10,6 +10,12 @@ public class PickItem : MonoBehaviour, IInteractable
 
     private GameObject InventorySlots;
 
+    public enum Property { usable, displayable};
+    // some of the items are items that are usable: like keys
+    // others are items that are displayable
+
+    public Property itemProperty;
+
     public void Interact(DisplayImage currentDisplay)
     {
         itemPickup();
@@ -34,6 +40,7 @@ public class PickItem : MonoBehaviour, IInteractable
             if(slot.transform.GetChild(0).GetComponent<Image>().sprite.name == "empty")
             {
                 slot.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("Items/"+DisplaySprite);
+                slot.GetComponent<Slot>().AssignProperty((int)itemProperty);
                 Destroy(gameObject);
                 break;
             }
