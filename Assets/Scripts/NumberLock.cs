@@ -7,6 +7,7 @@ public class NumberLock : MonoBehaviour
     public string Password;
 
     public GameObject OpenLockerSprite;
+    public AudioSource sound;
 
     [HideInInspector]
     public Sprite[] numberSprites;
@@ -47,6 +48,7 @@ public class NumberLock : MonoBehaviour
         {
             if (Password[i] != transform.GetChild(i).GetComponent<SpriteRenderer>().sprite.name[transform.GetChild(i).GetComponent<SpriteRenderer>().sprite.name.Length - 1])
             {
+                //sound.Play();
                 correct = false;
             }
         }

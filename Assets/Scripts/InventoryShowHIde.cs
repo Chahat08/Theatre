@@ -6,6 +6,7 @@ public class InventoryShowHide : MonoBehaviour
 {
     public GameObject panel;
     bool state;
+    public AudioSource sound;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class InventoryShowHide : MonoBehaviour
     {
         /*state = !state;
         panel.gameObject.SetActive(state);*/
+        sound.Play();
         Animator animator = panel.GetComponent<Animator>();
         if(animator!=null)
         {

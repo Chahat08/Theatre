@@ -10,7 +10,9 @@ public class Inventory : MonoBehaviour
     public GameObject previousSelectedSlot { get; set; }
 
     private GameObject slots;
-    public GameObject itemDisplayer { get; set; } 
+    public GameObject itemDisplayer { get; set; }
+
+    public AudioSource sound;
 
     void InitializeInventory()
     {
@@ -53,6 +55,7 @@ public class Inventory : MonoBehaviour
             {
                 // if the gameobject we are iterating over is the current slot and if it's usuable then do:
                 slot.GetComponent<Image>().color = new Color(.9f, .4f, .6f, 1);
+                // sound.Play();
 
             }
             else if (slot.gameObject == currentSelectedSlot && slot.GetComponent<Slot>().ItemProperty == Slot.property.displayable)

@@ -13,6 +13,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     private string displayImage;
 
+    public AudioSource sound;
+
     public void OnPointerClick(PointerEventData eventData)
     {
         inventory.GetComponent<Inventory>().previousSelectedSlot = inventory.GetComponent<Inventory>().currentSelectedSlot;
