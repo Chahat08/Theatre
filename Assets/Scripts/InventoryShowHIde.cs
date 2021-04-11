@@ -9,7 +9,7 @@ public class InventoryShowHide : MonoBehaviour
 
     void Start()
     {
-        state = true;
+        // state = true;
     }
 
     void Update()
@@ -19,7 +19,14 @@ public class InventoryShowHide : MonoBehaviour
 
     public void SwitchShowHide()
     {
-        state = !state;
-        panel.gameObject.SetActive(state);
+        /*state = !state;
+        panel.gameObject.SetActive(state);*/
+        Animator animator = panel.GetComponent<Animator>();
+        if(animator!=null)
+        {
+            bool isOpen = animator.GetBool("open");
+
+            animator.SetBool("open", !isOpen);
+        }
     }
 }
