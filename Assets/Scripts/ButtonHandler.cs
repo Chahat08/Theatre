@@ -56,4 +56,5 @@ public class ButtonHandler : MonoBehaviour
             currentWall.CurrentState = DisplayImage.State.normal;
         }
     }
+
 }
