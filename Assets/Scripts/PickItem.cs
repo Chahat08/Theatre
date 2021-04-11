@@ -26,7 +26,7 @@ public class PickItem : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        InventorySlots = GameObject.Find("Slots");
+        // InventorySlots = GameObject.Find("Slots");
     }
 
     // Update is called once per frame
@@ -35,8 +35,9 @@ public class PickItem : MonoBehaviour, IInteractable
         
     }
 
-    void itemPickup()
+    public void itemPickup()
     {
+        InventorySlots = GameObject.Find("Slots");
         foreach(Transform slot in InventorySlots.transform)
         {
             if(slot.transform.GetChild(0).GetComponent<Image>().sprite.name == "empty")

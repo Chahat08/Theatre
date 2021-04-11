@@ -23,7 +23,12 @@ public class Inventory : MonoBehaviour
             // gets the first child of the slot object
             slot.transform.GetChild(0).GetComponent<Image>().sprite =
                 Resources.Load<Sprite>("Items/empty");
+
+            slot.GetComponent<Slot>().ItemProperty = Slot.property.empty;
         }
+
+        currentSelectedSlot = GameObject.Find("slot");
+        previousSelectedSlot = currentSelectedSlot;
     }
 
 
@@ -52,7 +57,7 @@ public class Inventory : MonoBehaviour
             }
             else if (slot.gameObject == currentSelectedSlot && slot.GetComponent<Slot>().ItemProperty == Slot.property.displayable)
             {
-                slot.GetComponent<Slot>().DisplayItem();
+                //slot.GetComponent<Slot>().DisplayItem();
             }
             else
             {

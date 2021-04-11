@@ -17,6 +17,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         inventory.GetComponent<Inventory>().previousSelectedSlot = inventory.GetComponent<Inventory>().currentSelectedSlot;
         inventory.GetComponent<Inventory>().currentSelectedSlot = this.gameObject;
+        if (ItemProperty == Slot.property.displayable) DisplayItem();
     }
 
     /* This is the script attached to a slot object */
